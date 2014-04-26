@@ -19,7 +19,7 @@ public class CrimeActivity extends FragmentActivity {
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
+					.add(R.id.fragmentContainer, new PlaceholderFragment()).commit();
 		}
 	}
 
