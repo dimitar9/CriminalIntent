@@ -2,6 +2,7 @@ package com.bignerdranch.android.criminalintent;
 
 import java.util.UUID;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -76,6 +77,11 @@ public class CrimeFragment extends Fragment {
 		CrimeFragment fragment = new CrimeFragment();
 		fragment.setArguments(args);
 		return fragment;
+	}
+	
+	public void returnREsult()
+	{
+		getActivity().setResult(Activity.RESULT_OK,null);
 	}
 
 }

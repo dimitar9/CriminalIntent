@@ -14,6 +14,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class CrimeListFragment extends ListFragment {
+	
+	private static final int REQUEST_CRIME=1;
+	
 	private static final String TAG="CrimeListFragment";
 	private ArrayList<Crime> mCrimes;
 	@Override
@@ -29,11 +32,18 @@ public class CrimeListFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Crime c = ((CrimeAdapter)getListAdapter()).getItem(position);
+		Log.d(TAG,c.getTitle() + " was clicked");
 		
-		//Start CrimeActivity
-		Intent i = new Intent(getActivity(),CrimeActivity.class);
-		i.putExtra(CrimeFragment.EXTRA_CRIME_ID, c.getId());
-		startActivity(i);
+		//Start crimePagerActivity with this crime
+		Intent i = new Intent(getActivity(), CrimePagerActivity.class);
+		
+		startActivityForResult(i, REQUEST_CRIME);
+	}
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent date) {
+		if (requestCode == REQUEST_CRIME) {
+			// Handle result
+		}
 	}
 	
 	private class CrimeAdapter extends ArrayAdapter<Crime> {
@@ -62,5 +72,11 @@ public class CrimeListFragment extends ListFragment {
 			return convertView;
 			
 		}
+	}
+	
+	@Override
+	public void onResume(){
+		super.onResume();
+		((CrimeAdapter)getListAdapter()).notifyDataSetChanged();
 	}
 }
