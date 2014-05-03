@@ -38,6 +38,22 @@ public class CrimePagerActivity extends FragmentActivity {
 			}
 		});
 		
+		mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			@Override
+			public void onPageSelected(int pos) {
+				Crime crime = mCrimes.get(pos);
+				if(crime.getTitle()!=null){
+					setTitle(crime.getTitle());
+				}
+			}
+			
+			@Override
+			public void onPageScrolled(int pos, float posOffset, int posOffsetPixels) {}
+			
+			@Override
+			public void onPageScrollStateChanged(int state) {}
+		});
+		
 		UUID crimeId = (UUID)getIntent().getSerializableExtra(CrimeFragment.EXTRA_CRIME_ID);
 		for(int i=0; i< mCrimes.size(); i++) {
 			 if(mCrimes.get(i).getId().equals(crimeId)){
