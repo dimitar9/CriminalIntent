@@ -36,8 +36,8 @@ public class CrimeListFragment extends ListFragment {
 		
 		//Start crimePagerActivity with this crime
 		Intent i = new Intent(getActivity(), CrimePagerActivity.class);
-		
-		startActivityForResult(i, REQUEST_CRIME);
+		i.putExtra(CrimeFragment.EXTRA_CRIME_ID, c.getId());
+		startActivity(i);
 	}
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent date) {

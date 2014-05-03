@@ -79,7 +79,7 @@ public class CrimeFragment extends Fragment {
 		return fragment;
 	}
 	
-	public void returnREsult()
+	public void returnResult()
 	{
 		getActivity().setResult(Activity.RESULT_OK,null);
 	}
